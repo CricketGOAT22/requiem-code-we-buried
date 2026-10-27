@@ -1,0 +1,18 @@
+{
+  "name": "requiem-exhibit",
+  "private": true,
+  "version": "0.6.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "node scripts/verify-public.mjs && vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "vite": "6.3.5"
+  }
+}

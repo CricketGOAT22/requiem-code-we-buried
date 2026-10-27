@@ -1,0 +1,938 @@
+{
+  "kind": "real_git_history",
+  "repoName": "pallets/click",
+  "repoUrl": "https://github.com/pallets/click",
+  "scan": {
+    "head": "2247b35ea1c47c727d7a06e51fa280e12a863ff6",
+    "commits_visited": 120,
+    "pairs_examined": 119,
+    "pairs_with_python_changes": 76,
+    "candidate_removals_found": 38,
+    "displayed_cases": 8,
+    "curation": {
+      "distinct_observation_groups": 24,
+      "related_method_observations_grouped": 14,
+      "class_transition_groups": 6,
+      "selected_groups": 8
+    },
+    "skipped_unparseable_pairs": [],
+    "first_parent_only": true,
+    "include_tests": false
+  },
+  "disclaimer": "Real local Git history. Each case compares a pair of first-parent revisions. These selected cases are not a complete history. Related method removals from possible class transitions are grouped to avoid repeating one change as many stories. Structural similarity never proves code ancestry or equivalent behavior. Repository code was not executed.",
+  "older": "06b2a678741131fd577ce170e23e5ca0aeba0309",
+  "newer": "2247b35ea1c47c727d7a06e51fa280e12a863ff6",
+  "stones": [
+    {
+      "id": 0,
+      "name": "Argument.human_readable_name",
+      "path": "src/click/core.py",
+      "line": 3838,
+      "source": "def human_readable_name(self) -> str:\n        if self.metavar is not None:\n            return self.metavar\n        return self.name.upper()",
+      "status": "possible_survival",
+      "oldCommit": "06b2a678741131fd577ce170e23e5ca0aeba0309",
+      "newCommit": "2247b35ea1c47c727d7a06e51fa280e12a863ff6",
+      "possibleSuccessors": [
+        {
+          "name": "Argument.spec",
+          "path": "src/click/core.py",
+          "line": 3932,
+          "source": "def spec(self) -> str:\n        \"\"\"Returns the argument's metavar, which is how the user reads it in\n        ``--help``. An argument has no flag to spell, so this is the\n        :attr:`metavar` if one was given, and the uppercased :attr:`name`\n        otherwise.\n\n        .. versionadded:: 8.6.0\n        \"\"\"\n        if self.metavar is not None:\n            return self.metavar\n        return self.name.upper()",
+          "similarity": 1.0,
+          "kind": "exact_normalized_structure",
+          "relationship": "possible_rename_or_replacement",
+          "caveat": "Code similarity does not establish equal behavior or historical lineage."
+        }
+      ],
+      "interpretation": "Structural matches found; inspect linked source and Git diffs to verify.",
+      "contextWarnings": [],
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 06b2a678741131fd577ce170e23e5ca0aeba0309, src/click/core.py defines Argument.human_readable_name at line 3838.",
+          "source_excerpt": "def human_readable_name(self) -> str:\n        if self.metavar is not None:\n            return self.metavar\n        return self.name.upper()"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 2247b35ea1c47c727d7a06e51fa280e12a863ff6, qualified function Argument.human_readable_name is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 2247b35ea1c47c727d7a06e51fa280e12a863ff6, src/click/core.py defines newly appearing function Argument.spec, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def spec(self) -> str:\n        \"\"\"Returns the argument's metavar, which is how the user reads it in\n        ``--help``. An argument has no flag to spell, so this is the\n        :attr:`metavar` if one was given, and the uppercased :attr:`name`\n        otherwise.\n\n        .. versionadded:: 8.6.0\n        \"\"\"\n        if self.metavar is not None:\n            return self.metavar\n        return self.name.upper()"
+        }
+      ],
+      "caseGroup": {
+        "kind": "individual_observation",
+        "label": "Individual function observation",
+        "related_removals": 1,
+        "method_names": [],
+        "caveat": "Presence or absence is verified only in the compared revisions."
+      },
+      "oldCommitUrl": "https://github.com/pallets/click/commit/06b2a678741131fd577ce170e23e5ca0aeba0309",
+      "newCommitUrl": "https://github.com/pallets/click/commit/2247b35ea1c47c727d7a06e51fa280e12a863ff6"
+    },
+    {
+      "id": 1,
+      "name": "Option.get_help_record._write_opts",
+      "path": "src/click/core.py",
+      "line": 3344,
+      "source": "def _write_opts(opts: cabc.Sequence[str]) -> str:\n            nonlocal any_prefix_is_slash\n\n            rv, any_slashes = join_options(opts)\n\n            if any_slashes:\n                any_prefix_is_slash = True\n\n            if not self.is_flag and not self.count:\n                rv += f\" {self.make_metavar(ctx=ctx)}\"\n\n            return rv",
+      "status": "possible_survival",
+      "oldCommit": "36baa15ff831b939a22bc527cd76ce653ef6f66d",
+      "newCommit": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1",
+      "possibleSuccessors": [
+        {
+          "name": "Option.get_help_spec._write_opts",
+          "path": "src/click/core.py",
+          "line": 3377,
+          "source": "def _write_opts(opts: cabc.Sequence[str]) -> str:\n            nonlocal any_prefix_is_slash\n\n            rv, any_slashes = join_options(opts)\n\n            if any_slashes:\n                any_prefix_is_slash = True\n\n            if not self.is_flag and not self.count:\n                rv += f\" {self.make_metavar(ctx=ctx)}\"\n\n            return rv",
+          "similarity": 1.0,
+          "kind": "exact_normalized_structure",
+          "relationship": "possible_rename_or_replacement",
+          "caveat": "Code similarity does not establish equal behavior or historical lineage."
+        }
+      ],
+      "interpretation": "Structural matches found; inspect linked source and Git diffs to verify.",
+      "contextWarnings": [],
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 36baa15ff831b939a22bc527cd76ce653ef6f66d, src/click/core.py defines Option.get_help_record._write_opts at line 3344.",
+          "source_excerpt": "def _write_opts(opts: cabc.Sequence[str]) -> str:\n            nonlocal any_prefix_is_slash\n\n            rv, any_slashes = join_options(opts)\n\n            if any_slashes:\n                any_prefix_is_slash = True\n\n            if not self.is_flag and not self.count:\n                rv += f\" {self.make_metavar(ctx=ctx)}\"\n\n            return rv"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, qualified function Option.get_help_record._write_opts is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, src/click/core.py defines newly appearing function Option.get_help_spec._write_opts, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def _write_opts(opts: cabc.Sequence[str]) -> str:\n            nonlocal any_prefix_is_slash\n\n            rv, any_slashes = join_options(opts)\n\n            if any_slashes:\n                any_prefix_is_slash = True\n\n            if not self.is_flag and not self.count:\n                rv += f\" {self.make_metavar(ctx=ctx)}\"\n\n            return rv"
+        }
+      ],
+      "caseGroup": {
+        "kind": "possible_class_transition",
+        "label": "Possible class change: Option.get_help_record → Option.get_help_spec",
+        "related_removals": 1,
+        "method_names": [
+          "_write_opts"
+        ],
+        "caveat": "Grouped by matching method names and structure; not proof of a class rename."
+      },
+      "oldCommitUrl": "https://github.com/pallets/click/commit/36baa15ff831b939a22bc527cd76ce653ef6f66d",
+      "newCommitUrl": "https://github.com/pallets/click/commit/6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1"
+    },
+    {
+      "id": 2,
+      "name": "safecall",
+      "path": "src/click/utils.py",
+      "line": 36,
+      "source": "def safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:\n    \"\"\"Wraps a function so that it swallows exceptions.\"\"\"\n\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None\n\n    return update_wrapper(wrapper, func)",
+      "status": "possible_survival",
+      "oldCommit": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "newCommit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "possibleSuccessors": [
+        {
+          "name": "_safecall",
+          "path": "src/click/utils.py",
+          "line": 36,
+          "source": "def _safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:\n    \"\"\"Wraps a function so that it swallows exceptions.\n\n    :meta private:\n    \"\"\"\n\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None\n\n    return update_wrapper(wrapper, func)",
+          "similarity": 1.0,
+          "kind": "exact_normalized_structure",
+          "relationship": "possible_rename_or_replacement",
+          "caveat": "Code similarity does not establish equal behavior or historical lineage."
+        }
+      ],
+      "interpretation": "Structural matches found; inspect linked source and Git diffs to verify.",
+      "contextWarnings": [],
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines safecall at line 36.",
+          "source_excerpt": "def safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:\n    \"\"\"Wraps a function so that it swallows exceptions.\"\"\"\n\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None\n\n    return update_wrapper(wrapper, func)"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function safecall is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _safecall, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def _safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:\n    \"\"\"Wraps a function so that it swallows exceptions.\n\n    :meta private:\n    \"\"\"\n\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None\n\n    return update_wrapper(wrapper, func)"
+        }
+      ],
+      "caseGroup": {
+        "kind": "individual_observation",
+        "label": "Individual function observation",
+        "related_removals": 1,
+        "method_names": [],
+        "caveat": "Presence or absence is verified only in the compared revisions."
+      },
+      "oldCommitUrl": "https://github.com/pallets/click/commit/7df2f82305f20f1611a9668b38d26933b648d807",
+      "newCommitUrl": "https://github.com/pallets/click/commit/333c28d79cd982990ee98eef61ec20ab1a4f38ba"
+    },
+    {
+      "id": 3,
+      "name": "safecall.wrapper",
+      "path": "src/click/utils.py",
+      "line": 39,
+      "source": "def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None",
+      "status": "possible_survival",
+      "oldCommit": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "newCommit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "possibleSuccessors": [
+        {
+          "name": "_safecall.wrapper",
+          "path": "src/click/utils.py",
+          "line": 42,
+          "source": "def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None",
+          "similarity": 1.0,
+          "kind": "exact_normalized_structure",
+          "relationship": "possible_rename_or_replacement",
+          "caveat": "Code similarity does not establish equal behavior or historical lineage."
+        }
+      ],
+      "interpretation": "Structural matches found; inspect linked source and Git diffs to verify.",
+      "contextWarnings": [],
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines safecall.wrapper at line 39.",
+          "source_excerpt": "def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function safecall.wrapper is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _safecall.wrapper, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None"
+        }
+      ],
+      "caseGroup": {
+        "kind": "possible_class_transition",
+        "label": "Possible class change: safecall → _safecall",
+        "related_removals": 1,
+        "method_names": [
+          "wrapper"
+        ],
+        "caveat": "Grouped by matching method names and structure; not proof of a class rename."
+      },
+      "oldCommitUrl": "https://github.com/pallets/click/commit/7df2f82305f20f1611a9668b38d26933b648d807",
+      "newCommitUrl": "https://github.com/pallets/click/commit/333c28d79cd982990ee98eef61ec20ab1a4f38ba"
+    },
+    {
+      "id": 4,
+      "name": "make_default_short_help",
+      "path": "src/click/utils.py",
+      "line": 59,
+      "source": "def make_default_short_help(help: str, max_length: int = 45) -> str:\n    \"\"\"Returns a condensed version of help string.\n\n    :meta private:\n    \"\"\"\n    # Consider only the first paragraph.\n    paragraph_end = help.find(\"\\n\\n\")\n\n    if paragraph_end != -1:\n        help = help[:paragraph_end]\n\n    # Collapse newlines, tabs, and spaces.\n    words = help.split()\n\n    if not words:\n        return \"\"\n\n    # The first paragraph started with a \"no rewrap\" marker, ignore it.\n    if words[0] == \"\\b\":\n        words = words[1:]\n\n    total_length = 0\n    last_index = len(words) - 1\n\n    for i, word in enumerate(words):\n        total_length += len(word) + (i > 0)\n\n        if total_length > max_length:  # too long, truncate\n            break\n\n        if word[-1] == \".\":  # sentence end, truncate without \"...\"\n            return \" \".join(words[: i + 1])\n\n        if total_length == max_length and i != last_index:\n            break  # not at sentence end, truncate with \"...\"\n    else:\n        return \" \".join(words)  # no truncation needed\n\n    # Account for the length of the suffix.\n    total_length += len(\"...\")\n\n    # remove words until the length is short enough\n    while i > 0:\n        total_length -= len(words[i]) + (i > 0)\n\n        if total_length <= max_length:\n            break\n\n        i -= 1\n\n    return \" \".join(words[:i]) + \"...\"",
+      "status": "possible_survival",
+      "oldCommit": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "newCommit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "possibleSuccessors": [
+        {
+          "name": "_make_default_short_help",
+          "path": "src/click/utils.py",
+          "line": 62,
+          "source": "def _make_default_short_help(help: str, max_length: int = 45) -> str:\n    \"\"\"Returns a condensed version of help string.\n\n    :meta private:\n    \"\"\"\n    # Consider only the first paragraph.\n    paragraph_end = help.find(\"\\n\\n\")\n\n    if paragraph_end != -1:\n        help = help[:paragraph_end]\n\n    # Collapse newlines, tabs, and spaces.\n    words = help.split()\n\n    if not words:\n        return \"\"\n\n    # The first paragraph started with a \"no rewrap\" marker, ignore it.\n    if words[0] == \"\\b\":\n        words = words[1:]\n\n    total_length = 0\n    last_index = len(words) - 1\n\n    for i, word in enumerate(words):\n        total_length += len(word) + (i > 0)\n\n        if total_length > max_length:  # too long, truncate\n            break\n\n        if word[-1] == \".\":  # sentence end, truncate without \"...\"\n            return \" \".join(words[: i + 1])\n\n        if total_length == max_length and i != last_index:\n            break  # not at sentence end, truncate with \"...\"\n    else:\n        return \" \".join(words)  # no truncation needed\n\n    # Account for the length of the suffix.\n    total_length += len(\"...\")\n\n    # remove words until the length is short enough\n    while i > 0:\n        total_length -= len(words[i]) + (i > 0)\n\n        if total_length <= max_length:\n            break\n\n        i -= 1\n\n    return \" \".join(words[:i]) + \"...\"",
+          "similarity": 1.0,
+          "kind": "exact_normalized_structure",
+          "relationship": "possible_rename_or_replacement",
+          "caveat": "Code similarity does not establish equal behavior or historical lineage."
+        }
+      ],
+      "interpretation": "Structural matches found; inspect linked source and Git diffs to verify.",
+      "contextWarnings": [],
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines make_default_short_help at line 59.",
+          "source_excerpt": "def make_default_short_help(help: str, max_length: int = 45) -> str:\n    \"\"\"Returns a condensed version of help string.\n\n    :meta private:\n    \"\"\"\n    # Consider only the first paragraph.\n    paragraph_end = help.find(\"\\n\\n\")\n\n    if paragraph_end != -1:\n        help = help[:paragraph_end]\n\n    # Collapse newlines, tabs, and spaces.\n    words = help.split()\n\n    if not words:\n        return \"\"\n\n    # The first paragraph started with a \"no rewrap\" marker, ignore it.\n    if words[0] == \"\\b\":\n        words = words[1:]\n\n    total_length = 0\n    last_index = len(words) - 1\n\n    for i, word in enumerate(words):\n        total_length += len(word) + (i > 0)\n\n        if total_length > max_length:  # too long, truncate\n            break\n\n        if word[-1] == \".\":  # sentence end, truncate without \"...\"\n            return \" \".join(words[: i + 1])\n\n        if total_length == max_length and i != last_index:\n            break  # not at sentence end, truncate with \"...\"\n    else:\n        return \" \".join(words)  # no truncation needed\n\n    # Account for the length of the suffix.\n    total_length += len(\"...\")\n\n    # remove words until the length is short enough\n    while i > 0:\n        total_length -= len(words[i]) + (i > 0)\n\n        if total_length <= max_length:\n            break\n\n        i -= 1\n\n    return \" \".join(words[:i]) + \"...\""
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function make_default_short_help is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _make_default_short_help, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def _make_default_short_help(help: str, max_length: int = 45) -> str:\n    \"\"\"Returns a condensed version of help string.\n\n    :meta private:\n    \"\"\"\n    # Consider only the first paragraph.\n    paragraph_end = help.find(\"\\n\\n\")\n\n    if paragraph_end != -1:\n        help = help[:paragraph_end]\n\n    # Collapse newlines, tabs, and spaces.\n    words = help.split()\n\n    if not words:\n        return \"\"\n\n    # The first paragraph started with a \"no rewrap\" marker, ignore it.\n    if words[0] == \"\\b\":\n        words = words[1:]\n\n    total_length = 0\n    last_index = len(words) - 1\n\n    for i, word in enumerate(words):\n        total_length += len(word) + (i > 0)\n\n        if total_length > max_length:  # too long, truncate\n            break\n\n        if word[-1] == \".\":  # sentence end, truncate without \"...\"\n            return \" \".join(words[: i + 1])\n\n        if total_length == max_length and i != last_index:\n            break  # not at sentence end, truncate with \"...\"\n    else:\n        return \" \".join(words)  # no truncation needed\n\n    # Account for the length of the suffix.\n    total_length += len(\"...\")\n\n    # remove words until the length is short enough\n    while i > 0:\n        total_length -= len(words[i]) + (i > 0)\n\n        if total_length <= max_length:\n            break\n\n        i -= 1\n\n    return \" \".join(words[:i]) + \"...\""
+        }
+      ],
+      "caseGroup": {
+        "kind": "individual_observation",
+        "label": "Individual function observation",
+        "related_removals": 1,
+        "method_names": [],
+        "caveat": "Presence or absence is verified only in the compared revisions."
+      },
+      "oldCommitUrl": "https://github.com/pallets/click/commit/7df2f82305f20f1611a9668b38d26933b648d807",
+      "newCommitUrl": "https://github.com/pallets/click/commit/333c28d79cd982990ee98eef61ec20ab1a4f38ba"
+    },
+    {
+      "id": 5,
+      "name": "LazyFile.__init__",
+      "path": "src/click/utils.py",
+      "line": 127,
+      "source": "def __init__(\n        self,\n        filename: str | os.PathLike[str],\n        mode: str = \"r\",\n        encoding: str | None = None,\n        errors: str | None = \"strict\",\n        atomic: bool = False,\n    ) -> None:\n        self.name = os.fspath(filename)\n        self.mode = mode\n        self.encoding = encoding\n        self.errors = errors\n        self.atomic = atomic\n\n        if self.name == \"-\":\n            self._f, self.should_close = open_stream(filename, mode, encoding, errors)\n        else:\n            if \"r\" in mode:\n                # Open and close the file in case we're opening it for\n                # reading so that we can catch at least some errors in\n                # some cases early.\n                open(filename, mode).close()\n            self._f = None\n            self.should_close = True",
+      "status": "possible_survival",
+      "oldCommit": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "newCommit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "possibleSuccessors": [
+        {
+          "name": "_LazyFile.__init__",
+          "path": "src/click/utils.py",
+          "line": 132,
+          "source": "def __init__(\n        self,\n        filename: str | os.PathLike[str],\n        mode: str = \"r\",\n        encoding: str | None = None,\n        errors: str | None = \"strict\",\n        atomic: bool = False,\n    ) -> None:\n        self.name = os.fspath(filename)\n        self.mode = mode\n        self.encoding = encoding\n        self.errors = errors\n        self.atomic = atomic\n\n        if self.name == \"-\":\n            self._f, self.should_close = open_stream(filename, mode, encoding, errors)\n        else:\n            if \"r\" in mode:\n                # Open and close the file in case we're opening it for\n                # reading so that we can catch at least some errors in\n                # some cases early.\n                open(filename, mode).close()\n            self._f = None\n            self.should_close = True",
+          "similarity": 1.0,
+          "kind": "exact_normalized_structure",
+          "relationship": "possible_rename_or_replacement",
+          "caveat": "Code similarity does not establish equal behavior or historical lineage."
+        }
+      ],
+      "interpretation": "Structural matches found; inspect linked source and Git diffs to verify.",
+      "contextWarnings": [],
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines LazyFile.__init__ at line 127.",
+          "source_excerpt": "def __init__(\n        self,\n        filename: str | os.PathLike[str],\n        mode: str = \"r\",\n        encoding: str | None = None,\n        errors: str | None = \"strict\",\n        atomic: bool = False,\n    ) -> None:\n        self.name = os.fspath(filename)\n        self.mode = mode\n        self.encoding = encoding\n        self.errors = errors\n        self.atomic = atomic\n\n        if self.name == \"-\":\n            self._f, self.should_close = open_stream(filename, mode, encoding, errors)\n        else:\n            if \"r\" in mode:\n                # Open and close the file in case we're opening it for\n                # reading so that we can catch at least some errors in\n                # some cases early.\n                open(filename, mode).close()\n            self._f = None\n            self.should_close = True"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function LazyFile.__init__ is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _LazyFile.__init__, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def __init__(\n        self,\n        filename: str | os.PathLike[str],\n        mode: str = \"r\",\n        encoding: str | None = None,\n        errors: str | None = \"strict\",\n        atomic: bool = False,\n    ) -> None:\n        self.name = os.fspath(filename)\n        self.mode = mode\n        self.encoding = encoding\n        self.errors = errors\n        self.atomic = atomic\n\n        if self.name == \"-\":\n            self._f, self.should_close = open_stream(filename, mode, encoding, errors)\n        else:\n            if \"r\" in mode:\n                # Open and close the file in case we're opening it for\n                # reading so that we can catch at least some errors in\n                # some cases early.\n                open(filename, mode).close()\n            self._f = None\n            self.should_close = True"
+        }
+      ],
+      "caseGroup": {
+        "kind": "possible_class_transition",
+        "label": "Possible class change: LazyFile → _LazyFile",
+        "related_removals": 8,
+        "method_names": [
+          "__init__",
+          "__getattr__",
+          "__repr__",
+          "open",
+          "close",
+          "close_intelligently",
+          "__exit__",
+          "__iter__"
+        ],
+        "caveat": "Grouped by matching method names and structure; not proof of a class rename."
+      },
+      "oldCommitUrl": "https://github.com/pallets/click/commit/7df2f82305f20f1611a9668b38d26933b648d807",
+      "newCommitUrl": "https://github.com/pallets/click/commit/333c28d79cd982990ee98eef61ec20ab1a4f38ba"
+    },
+    {
+      "id": 6,
+      "name": "LazyFile.__enter__",
+      "path": "src/click/utils.py",
+      "line": 190,
+      "source": "def __enter__(self) -> LazyFile:\n        return self",
+      "status": "possible_survival",
+      "oldCommit": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "newCommit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "possibleSuccessors": [
+        {
+          "name": "_KeepOpenFile.__enter__",
+          "path": "src/click/utils.py",
+          "line": 234,
+          "source": "def __enter__(self) -> _KeepOpenFile:\n        return self",
+          "similarity": 1.0,
+          "kind": "exact_normalized_structure",
+          "relationship": "possible_rename_or_replacement",
+          "caveat": "Code similarity does not establish equal behavior or historical lineage."
+        },
+        {
+          "name": "_LazyFile.__enter__",
+          "path": "src/click/utils.py",
+          "line": 195,
+          "source": "def __enter__(self) -> _LazyFile:\n        return self",
+          "similarity": 1.0,
+          "kind": "exact_normalized_structure",
+          "relationship": "possible_rename_or_replacement",
+          "caveat": "Code similarity does not establish equal behavior or historical lineage."
+        }
+      ],
+      "interpretation": "Structural matches found; inspect linked source and Git diffs to verify.",
+      "contextWarnings": [],
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines LazyFile.__enter__ at line 190.",
+          "source_excerpt": "def __enter__(self) -> LazyFile:\n        return self"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function LazyFile.__enter__ is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _KeepOpenFile.__enter__, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def __enter__(self) -> _KeepOpenFile:\n        return self"
+        },
+        {
+          "id": "E4",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _LazyFile.__enter__, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def __enter__(self) -> _LazyFile:\n        return self"
+        }
+      ],
+      "caseGroup": {
+        "kind": "possible_class_transition",
+        "label": "Possible class change: LazyFile → _KeepOpenFile",
+        "related_removals": 1,
+        "method_names": [
+          "__enter__"
+        ],
+        "caveat": "Grouped by matching method names and structure; not proof of a class rename."
+      },
+      "oldCommitUrl": "https://github.com/pallets/click/commit/7df2f82305f20f1611a9668b38d26933b648d807",
+      "newCommitUrl": "https://github.com/pallets/click/commit/333c28d79cd982990ee98eef61ec20ab1a4f38ba"
+    },
+    {
+      "id": 7,
+      "name": "Argument.to_info_dict",
+      "path": "src/click/core.py",
+      "line": 3750,
+      "source": "def to_info_dict(self) -> dict[str, t.Any]:\n        info_dict = super().to_info_dict()\n        info_dict.update(help=self.help)\n        return info_dict",
+      "status": "no_successor_found",
+      "oldCommit": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1",
+      "newCommit": "3cbaa76b6014be7427d1ab06b4af40f01e7c278e",
+      "possibleSuccessors": [],
+      "interpretation": "No structural match found among newly appearing functions; this does not prove permanent deletion.",
+      "contextWarnings": [],
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, src/click/core.py defines Argument.to_info_dict at line 3750.",
+          "source_excerpt": "def to_info_dict(self) -> dict[str, t.Any]:\n        info_dict = super().to_info_dict()\n        info_dict.update(help=self.help)\n        return info_dict"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 3cbaa76b6014be7427d1ab06b4af40f01e7c278e, qualified function Argument.to_info_dict is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+        }
+      ],
+      "caseGroup": {
+        "kind": "individual_observation",
+        "label": "Individual function observation",
+        "related_removals": 1,
+        "method_names": [],
+        "caveat": "Presence or absence is verified only in the compared revisions."
+      },
+      "oldCommitUrl": "https://github.com/pallets/click/commit/6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1",
+      "newCommitUrl": "https://github.com/pallets/click/commit/3cbaa76b6014be7427d1ab06b4af40f01e7c278e"
+    }
+  ],
+  "summary": {
+    "removed": 8,
+    "possibleSurvivors": 7,
+    "unmatched": 1
+  },
+  "publicMode": true,
+  "reportDigest": "9b77bb49cd89390ef48909d20b5f2a76d695742da5798411fccb803724d55a4e",
+  "audit": {
+    "selected_cases": 8,
+    "verified_cases": 8,
+    "scope": "Code presence, absence, source text and structural metadata across recorded commit pairs only",
+    "limitations": "Does not prove the cause of a deletion, class rename, ancestry, or equivalent runtime behavior"
+  },
+  "precomputedNarrations": {
+    "0": {
+      "subject": "src/click/core.py::Argument.human_readable_name",
+      "old_commit": "06b2a678741131fd577ce170e23e5ca0aeba0309",
+      "new_commit": "2247b35ea1c47c727d7a06e51fa280e12a863ff6",
+      "afterlife_status": "possible_survival",
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 06b2a678741131fd577ce170e23e5ca0aeba0309, src/click/core.py defines Argument.human_readable_name at line 3838.",
+          "source_excerpt": "def human_readable_name(self) -> str:\n        if self.metavar is not None:\n            return self.metavar\n        return self.name.upper()"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 2247b35ea1c47c727d7a06e51fa280e12a863ff6, qualified function Argument.human_readable_name is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 2247b35ea1c47c727d7a06e51fa280e12a863ff6, src/click/core.py defines newly appearing function Argument.spec, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def spec(self) -> str:\n        \"\"\"Returns the argument's metavar, which is how the user reads it in\n        ``--help``. An argument has no flag to spell, so this is the\n        :attr:`metavar` if one was given, and the uppercased :attr:`name`\n        otherwise.\n\n        .. versionadded:: 8.6.0\n        \"\"\"\n        if self.metavar is not None:\n            return self.metavar\n        return self.name.upper()"
+        }
+      ],
+      "factual_view": {
+        "mode": "bounded_git_observations",
+        "claims": [
+          {
+            "id": "E1",
+            "text": "At commit 06b2a678741131fd577ce170e23e5ca0aeba0309, src/click/core.py defines Argument.human_readable_name at line 3838."
+          },
+          {
+            "id": "E2",
+            "text": "At commit 2247b35ea1c47c727d7a06e51fa280e12a863ff6, qualified function Argument.human_readable_name is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+          },
+          {
+            "id": "E3",
+            "text": "At commit 2247b35ea1c47c727d7a06e51fa280e12a863ff6, src/click/core.py defines newly appearing function Argument.spec, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation."
+          }
+        ],
+        "sha256": "3a06b7a327ad4e6add804ae1f00250f29aa2578dce32b06502405657dca429c4",
+        "caveat": "These statements are constructed from the Git scan report, not written or validated by the language model. Verify a saved report against its original Git objects before claiming an independent audit. A structural match cannot prove lineage or runtime equivalence."
+      },
+      "ai_interpretation": {
+        "epitaph": "The name shifts, a fleeting echo of intent, lost to the currents of change. Once a simple offering, now a ghost in the machine.",
+        "explanation": "The function `Argument.human_readable_name` was present in `src/click/core.py` at commit `06b2a678741131fd577ce170e23e5ca0aeba0309`. It was subsequently removed at commit `2247b35ea1c47c727d7a06e51fa280e12a863ff6`, replaced by a similar function `Argument.spec`. The exact reasons for this change are not discernible from the available code excerpts.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "model": "gemma3:4b",
+      "metrics": {
+        "total_seconds": 7.163,
+        "prompt_tokens": 724,
+        "output_tokens": 207
+      },
+      "warning": "AI prose is an interpretation, not verified Git history. The factual view is generated separately from Git observations. Evidence IDs are validated; the AI explanation and epitaph are NOT fact-checked and must not be presented as verified history."
+    },
+    "1": {
+      "subject": "src/click/core.py::Option.get_help_record._write_opts",
+      "old_commit": "36baa15ff831b939a22bc527cd76ce653ef6f66d",
+      "new_commit": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1",
+      "afterlife_status": "possible_survival",
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 36baa15ff831b939a22bc527cd76ce653ef6f66d, src/click/core.py defines Option.get_help_record._write_opts at line 3344.",
+          "source_excerpt": "def _write_opts(opts: cabc.Sequence[str]) -> str:\n            nonlocal any_prefix_is_slash\n\n            rv, any_slashes = join_options(opts)\n\n            if any_slashes:\n                any_prefix_is_slash = True\n\n            if not self.is_flag and not self.count:\n                rv += f\" {self.make_metavar(ctx=ctx)}\"\n\n            return rv"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, qualified function Option.get_help_record._write_opts is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, src/click/core.py defines newly appearing function Option.get_help_spec._write_opts, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def _write_opts(opts: cabc.Sequence[str]) -> str:\n            nonlocal any_prefix_is_slash\n\n            rv, any_slashes = join_options(opts)\n\n            if any_slashes:\n                any_prefix_is_slash = True\n\n            if not self.is_flag and not self.count:\n                rv += f\" {self.make_metavar(ctx=ctx)}\"\n\n            return rv"
+        }
+      ],
+      "factual_view": {
+        "mode": "bounded_git_observations",
+        "claims": [
+          {
+            "id": "E1",
+            "text": "At commit 36baa15ff831b939a22bc527cd76ce653ef6f66d, src/click/core.py defines Option.get_help_record._write_opts at line 3344."
+          },
+          {
+            "id": "E2",
+            "text": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, qualified function Option.get_help_record._write_opts is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+          },
+          {
+            "id": "E3",
+            "text": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, src/click/core.py defines newly appearing function Option.get_help_spec._write_opts, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation."
+          }
+        ],
+        "sha256": "4fdf542ac9d0878ac8d8dece1af018e4e3e41218c2015ee9a6621b8fc5040007",
+        "caveat": "These statements are constructed from the Git scan report, not written or validated by the language model. Verify a saved report against its original Git objects before claiming an independent audit. A structural match cannot prove lineage or runtime equivalence."
+      },
+      "ai_interpretation": {
+        "epitaph": "The script shifted, a subtle displacement, leaving only echoes of its former form. A silent rearrangement, a ghost of function remains.",
+        "explanation": "The function `Option.get_help_record._write_opts` was removed from `src/click/core.py` at commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1. Simultaneously, a functionally identical function `Option.get_help_spec._write_opts` was introduced. This indicates a change in the codebase, but the precise reason for the removal is unknown.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "model": "gemma3:4b",
+      "metrics": {
+        "total_seconds": 3.964,
+        "prompt_tokens": 798,
+        "output_tokens": 178
+      },
+      "warning": "AI prose is an interpretation, not verified Git history. The factual view is generated separately from Git observations. Evidence IDs are validated; the AI explanation and epitaph are NOT fact-checked and must not be presented as verified history."
+    },
+    "2": {
+      "subject": "src/click/utils.py::safecall",
+      "old_commit": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "new_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "afterlife_status": "possible_survival",
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines safecall at line 36.",
+          "source_excerpt": "def safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:\n    \"\"\"Wraps a function so that it swallows exceptions.\"\"\"\n\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None\n\n    return update_wrapper(wrapper, func)"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function safecall is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _safecall, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def _safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:\n    \"\"\"Wraps a function so that it swallows exceptions.\n\n    :meta private:\n    \"\"\"\n\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None\n\n    return update_wrapper(wrapper, func)"
+        }
+      ],
+      "factual_view": {
+        "mode": "bounded_git_observations",
+        "claims": [
+          {
+            "id": "E1",
+            "text": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines safecall at line 36."
+          },
+          {
+            "id": "E2",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function safecall is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+          },
+          {
+            "id": "E3",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _safecall, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation."
+          }
+        ],
+        "sha256": "5c2e200a9e495181dd5cb54f2d39d0c7ae9bf6810efb0a225ba325d1e2c03b07",
+        "caveat": "These statements are constructed from the Git scan report, not written or validated by the language model. Verify a saved report against its original Git objects before claiming an independent audit. A structural match cannot prove lineage or runtime equivalence."
+      },
+      "ai_interpretation": {
+        "epitaph": "The echo of a safeguard fades, a silent, shadowed plea.  A new form arises, mirroring what used to be.",
+        "explanation": "The original `safecall` function was removed from `src/click/utils.py` at commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba.  Subsequently, a function named `_safecall` was defined within the same file, exhibiting a structural similarity to the original. This change indicates a functional replacement, but the precise reasons for the removal and the introduction of the new function are not discernible from the provided data.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "model": "gemma3:4b",
+      "metrics": {
+        "total_seconds": 4.058,
+        "prompt_tokens": 779,
+        "output_tokens": 185
+      },
+      "warning": "AI prose is an interpretation, not verified Git history. The factual view is generated separately from Git observations. Evidence IDs are validated; the AI explanation and epitaph are NOT fact-checked and must not be presented as verified history."
+    },
+    "3": {
+      "subject": "src/click/utils.py::safecall.wrapper",
+      "old_commit": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "new_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "afterlife_status": "possible_survival",
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines safecall.wrapper at line 39.",
+          "source_excerpt": "def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function safecall.wrapper is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _safecall.wrapper, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None"
+        }
+      ],
+      "factual_view": {
+        "mode": "bounded_git_observations",
+        "claims": [
+          {
+            "id": "E1",
+            "text": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines safecall.wrapper at line 39."
+          },
+          {
+            "id": "E2",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function safecall.wrapper is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+          },
+          {
+            "id": "E3",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _safecall.wrapper, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation."
+          }
+        ],
+        "sha256": "a20a49d51e74c0775ba58834ea28ecd9213e2987b2fc61f542f42ebb384d1910",
+        "caveat": "These statements are constructed from the Git scan report, not written or validated by the language model. Verify a saved report against its original Git objects before claiming an independent audit. A structural match cannot prove lineage or runtime equivalence."
+      },
+      "ai_interpretation": {
+        "epitaph": "The echo of a call fades into silence, a ghost of intention lost to the flow. What once protected now simply ceases to be.",
+        "explanation": "The `safecall.wrapper` function was defined in `src/click/utils.py` at line 39. Subsequently, it was removed from the repository. A new function, `_safecall.wrapper`, with identical code, was introduced. The original function's removal is not confirmed, and the new function's introduction does not establish a causal relationship.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "model": "gemma3:4b",
+      "metrics": {
+        "total_seconds": 3.347,
+        "prompt_tokens": 651,
+        "output_tokens": 152
+      },
+      "warning": "AI prose is an interpretation, not verified Git history. The factual view is generated separately from Git observations. Evidence IDs are validated; the AI explanation and epitaph are NOT fact-checked and must not be presented as verified history."
+    },
+    "4": {
+      "subject": "src/click/utils.py::make_default_short_help",
+      "old_commit": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "new_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "afterlife_status": "possible_survival",
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines make_default_short_help at line 59.",
+          "source_excerpt": "def make_default_short_help(help: str, max_length: int = 45) -> str:\n    \"\"\"Returns a condensed version of help string.\n\n    :meta private:\n    \"\"\"\n    # Consider only the first paragraph.\n    paragraph_end = help.find(\"\\n\\n\")\n\n    if paragraph_end != -1:\n        help = help[:paragraph_end]\n\n    # Collapse newlines, tabs, and spaces.\n    words = help.split()\n\n    if not words:\n        return \"\"\n\n    # The first paragraph started with a \"no rewrap\" marker, ignore it.\n    if words[0] == \"\\b\":\n        words = words[1:]\n\n    total_length = 0\n    last_index = len(words) - 1\n\n    for i, word in enumerate(words):\n        total_length += len(word) + (i > 0)\n\n        if total_length > max_length:  # too long, truncate\n            break\n\n        if word[-1] == \".\":  # sentence end, truncate without \"...\"\n            return \" \".join(words[: i + 1])\n\n        if total_length == max_length and i != last_index:\n            break  # not at sentence end, truncate with \"...\"\n    else:\n        return \" \".join(words)  # no truncation needed\n\n    # Account for the length of the suffix.\n    total_length += len(\"...\")\n\n    # remove words until the length is short enough\n    while i > 0:\n        total_length -= len(words[i]) + (i > 0)\n\n        if total_length <= max_length:\n            break\n\n        i -= 1\n\n    return \" \".join(words[:i]) + \"...\""
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function make_default_short_help is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _make_default_short_help, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def _make_default_short_help(help: str, max_length: int = 45) -> str:\n    \"\"\"Returns a condensed version of help string.\n\n    :meta private:\n    \"\"\"\n    # Consider only the first paragraph.\n    paragraph_end = help.find(\"\\n\\n\")\n\n    if paragraph_end != -1:\n        help = help[:paragraph_end]\n\n    # Collapse newlines, tabs, and spaces.\n    words = help.split()\n\n    if not words:\n        return \"\"\n\n    # The first paragraph started with a \"no rewrap\" marker, ignore it.\n    if words[0] == \"\\b\":\n        words = words[1:]\n\n    total_length = 0\n    last_index = len(words) - 1\n\n    for i, word in enumerate(words):\n        total_length += len(word) + (i > 0)\n\n        if total_length > max_length:  # too long, truncate\n            break\n\n        if word[-1] == \".\":  # sentence end, truncate without \"...\"\n            return \" \".join(words[: i + 1])\n\n        if total_length == max_length and i != last_index:\n            break  # not at sentence end, truncate with \"...\"\n    else:\n        return \" \".join(words)  # no truncation needed\n\n    # Account for the length of the suffix.\n    total_length += len(\"...\")\n\n    # remove words until the length is short enough\n    while i > 0:\n        total_length -= len(words[i]) + (i > 0)\n\n        if total_length <= max_length:\n            break\n\n        i -= 1\n\n    return \" \".join(words[:i]) + \"...\""
+        }
+      ],
+      "factual_view": {
+        "mode": "bounded_git_observations",
+        "claims": [
+          {
+            "id": "E1",
+            "text": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines make_default_short_help at line 59."
+          },
+          {
+            "id": "E2",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function make_default_short_help is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+          },
+          {
+            "id": "E3",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _make_default_short_help, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation."
+          }
+        ],
+        "sha256": "428c6ca2fab4e74a0867a315fe515467545f5742c89f7a9bf5936006a8934576",
+        "caveat": "These statements are constructed from the Git scan report, not written or validated by the language model. Verify a saved report against its original Git objects before claiming an independent audit. A structural match cannot prove lineage or runtime equivalence."
+      },
+      "ai_interpretation": {
+        "epitaph": "The code condensed, a shadow shifting slow, a mirrored echo where the original did flow.",
+        "explanation": "The function `make_default_short_help` was removed from the `src/click/utils.py` file at commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba.  It was replaced by `_make_default_short_help`, exhibiting identical code, but the original function is no longer present.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "model": "gemma3:4b",
+      "metrics": {
+        "total_seconds": 4.466,
+        "prompt_tokens": 1484,
+        "output_tokens": 155
+      },
+      "warning": "AI prose is an interpretation, not verified Git history. The factual view is generated separately from Git observations. Evidence IDs are validated; the AI explanation and epitaph are NOT fact-checked and must not be presented as verified history."
+    },
+    "5": {
+      "subject": "src/click/utils.py::LazyFile.__init__",
+      "old_commit": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "new_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "afterlife_status": "possible_survival",
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines LazyFile.__init__ at line 127.",
+          "source_excerpt": "def __init__(\n        self,\n        filename: str | os.PathLike[str],\n        mode: str = \"r\",\n        encoding: str | None = None,\n        errors: str | None = \"strict\",\n        atomic: bool = False,\n    ) -> None:\n        self.name = os.fspath(filename)\n        self.mode = mode\n        self.encoding = encoding\n        self.errors = errors\n        self.atomic = atomic\n\n        if self.name == \"-\":\n            self._f, self.should_close = open_stream(filename, mode, encoding, errors)\n        else:\n            if \"r\" in mode:\n                # Open and close the file in case we're opening it for\n                # reading so that we can catch at least some errors in\n                # some cases early.\n                open(filename, mode).close()\n            self._f = None\n            self.should_close = True"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function LazyFile.__init__ is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _LazyFile.__init__, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def __init__(\n        self,\n        filename: str | os.PathLike[str],\n        mode: str = \"r\",\n        encoding: str | None = None,\n        errors: str | None = \"strict\",\n        atomic: bool = False,\n    ) -> None:\n        self.name = os.fspath(filename)\n        self.mode = mode\n        self.encoding = encoding\n        self.errors = errors\n        self.atomic = atomic\n\n        if self.name == \"-\":\n            self._f, self.should_close = open_stream(filename, mode, encoding, errors)\n        else:\n            if \"r\" in mode:\n                # Open and close the file in case we're opening it for\n                # reading so that we can catch at least some errors in\n                # some cases early.\n                open(filename, mode).close()\n            self._f = None\n            self.should_close = True"
+        }
+      ],
+      "factual_view": {
+        "mode": "bounded_git_observations",
+        "claims": [
+          {
+            "id": "E1",
+            "text": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines LazyFile.__init__ at line 127."
+          },
+          {
+            "id": "E2",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function LazyFile.__init__ is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+          },
+          {
+            "id": "E3",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _LazyFile.__init__, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation."
+          }
+        ],
+        "sha256": "9c90e54407811db868bb75947d6e5b42f0962d6f78162db988ccbf77701204ad",
+        "caveat": "These statements are constructed from the Git scan report, not written or validated by the language model. Verify a saved report against its original Git objects before claiming an independent audit. A structural match cannot prove lineage or runtime equivalence."
+      },
+      "ai_interpretation": {
+        "epitaph": "The file vanished, a silent shift, leaving only echoes of its former form.",
+        "explanation": "The `LazyFile.__init__` function was present in `src/click/utils.py` at commit 7df2f82305f20f1611a9668b38d26933b648d807, but absent at commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba.  A new function, `_LazyFile.__init__`, appeared at the latter commit, exhibiting structural similarity.  The original function's removal is not explained.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "model": "gemma3:4b",
+      "metrics": {
+        "total_seconds": 4.66,
+        "prompt_tokens": 1013,
+        "output_tokens": 200
+      },
+      "warning": "AI prose is an interpretation, not verified Git history. The factual view is generated separately from Git observations. Evidence IDs are validated; the AI explanation and epitaph are NOT fact-checked and must not be presented as verified history."
+    },
+    "6": {
+      "subject": "src/click/utils.py::LazyFile.__enter__",
+      "old_commit": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "new_commit": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "afterlife_status": "possible_survival",
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines LazyFile.__enter__ at line 190.",
+          "source_excerpt": "def __enter__(self) -> LazyFile:\n        return self"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function LazyFile.__enter__ is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _KeepOpenFile.__enter__, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def __enter__(self) -> _KeepOpenFile:\n        return self"
+        },
+        {
+          "id": "E4",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _LazyFile.__enter__, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def __enter__(self) -> _LazyFile:\n        return self"
+        }
+      ],
+      "factual_view": {
+        "mode": "bounded_git_observations",
+        "claims": [
+          {
+            "id": "E1",
+            "text": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines LazyFile.__enter__ at line 190."
+          },
+          {
+            "id": "E2",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function LazyFile.__enter__ is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+          },
+          {
+            "id": "E3",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _KeepOpenFile.__enter__, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation."
+          },
+          {
+            "id": "E4",
+            "text": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _LazyFile.__enter__, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation."
+          }
+        ],
+        "sha256": "c9dc906c97577d89caafecf120ce064a1b04596d55c4f2250d8df4b2e2674dc6",
+        "caveat": "These statements are constructed from the Git scan report, not written or validated by the language model. Verify a saved report against its original Git objects before claiming an independent audit. A structural match cannot prove lineage or runtime equivalence."
+      },
+      "ai_interpretation": {
+        "epitaph": "The file sleeps, a ghost of its former self, lost in the shifting sands of code. A silent echo lingers, a trace of what once was.",
+        "explanation": "The `LazyFile.__enter__` function was removed from `src/click/utils.py` at commit `333c28d79cd982990ee98eef61ec20ab1a4f38ba`. It was replaced by `_KeepOpenFile.__enter__` and `_LazyFile.__enter__`, both exhibiting a structural similarity score of 1.000. The original function's disappearance is documented, but the reasons for this change are not established.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3",
+          "E4"
+        ]
+      },
+      "model": "gemma3:4b",
+      "metrics": {
+        "total_seconds": 4.023,
+        "prompt_tokens": 722,
+        "output_tokens": 196
+      },
+      "warning": "AI prose is an interpretation, not verified Git history. The factual view is generated separately from Git observations. Evidence IDs are validated; the AI explanation and epitaph are NOT fact-checked and must not be presented as verified history."
+    },
+    "7": {
+      "subject": "src/click/core.py::Argument.to_info_dict",
+      "old_commit": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1",
+      "new_commit": "3cbaa76b6014be7427d1ab06b4af40f01e7c278e",
+      "afterlife_status": "no_successor_found",
+      "observations": [
+        {
+          "id": "E1",
+          "claim": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, src/click/core.py defines Argument.to_info_dict at line 3750.",
+          "source_excerpt": "def to_info_dict(self) -> dict[str, t.Any]:\n        info_dict = super().to_info_dict()\n        info_dict.update(help=self.help)\n        return info_dict"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 3cbaa76b6014be7427d1ab06b4af40f01e7c278e, qualified function Argument.to_info_dict is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+        }
+      ],
+      "factual_view": {
+        "mode": "bounded_git_observations",
+        "claims": [
+          {
+            "id": "E1",
+            "text": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, src/click/core.py defines Argument.to_info_dict at line 3750."
+          },
+          {
+            "id": "E2",
+            "text": "At commit 3cbaa76b6014be7427d1ab06b4af40f01e7c278e, qualified function Argument.to_info_dict is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+          }
+        ],
+        "sha256": "4539e82e42e4ae795d80e5dd601d7e7e3365e4719db5e392b785e3b755d2dbc6",
+        "caveat": "These statements are constructed from the Git scan report, not written or validated by the language model. Verify a saved report against its original Git objects before claiming an independent audit. A structural match cannot prove lineage or runtime equivalence."
+      },
+      "ai_interpretation": {
+        "epitaph": "The lines once shaped a structure, now a ghost remains. Echoes of intent linger, lost to shifting sands.",
+        "explanation": "The function `Argument.to_info_dict` was defined in `src/click/core.py` at line 3750 according to commit `6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1`. However, at commit `3cbaa76b6014be7427d1ab06b4af40f01e7c278e`, the function was no longer present at that location within the repository. The removal itself is not explained.",
+        "evidence_ids": [
+          "E1",
+          "E2"
+        ]
+      },
+      "model": "gemma3:4b",
+      "metrics": {
+        "total_seconds": 3.58,
+        "prompt_tokens": 489,
+        "output_tokens": 194
+      },
+      "warning": "AI prose is an interpretation, not verified Git history. The factual view is generated separately from Git observations. Evidence IDs are validated; the AI explanation and epitaph are NOT fact-checked and must not be presented as verified history."
+    }
+  },
+  "evaluation": {
+    "protocol": "requiem-human-adjudication-v1",
+    "total_valid_outputs": 6,
+    "invalid_outputs_excluded": 0,
+    "completed": 6,
+    "pending": 0,
+    "groups": [
+      {
+        "model": "gemma3:4b",
+        "method": "baseline",
+        "reviewed": 3,
+        "supported": 0,
+        "unsupported": 3,
+        "unclear": 0
+      },
+      {
+        "model": "gemma3:4b",
+        "method": "guarded",
+        "reviewed": 3,
+        "supported": 0,
+        "unsupported": 3,
+        "unclear": 0
+      }
+    ],
+    "paired_outcomes": {
+      "both_supported": 0,
+      "both_unsupported": 3,
+      "guarded_supported_baseline_unsupported": 0,
+      "baseline_supported_guarded_unsupported": 0,
+      "at_least_one_unclear": 0,
+      "incomplete_pair": 0
+    },
+    "reportable_as_complete": true
+  }
+}

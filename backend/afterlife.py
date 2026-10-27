@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 import textwrap
 
-from backend.archaeology import candidates, functions, git, python_files, source_at
+from backend.archaeology import candidates, changed_python_paths, functions, git, source_at
 
 
 def shape_tokens(function_source):
@@ -95,17 +95,16 @@ def find_afterlives(repo, older="HEAD~1", newer="HEAD"):
     of a new move or rename during the selected revision interval.
     """
     repo = Path(repo).resolve()
-    old_paths = python_files(repo, older)
-    new_paths = python_files(repo, newer)
-    old_keys = {
-        (path, function)
-        for path in old_paths
-        for function in functions(source_at(repo, older, path))
-    }
+    # A function cannot appear in an unchanged source file. Scanning the diff
+    # reduces the work from O(all Python files x commit pairs) to O(changed files).
+    # Renamed files appear as old-path deletion plus new-path introduction.
+    changed_paths = sorted(changed_python_paths(repo, older, newer))
     arrivals = []
-    for path in sorted(new_paths):
-        for name, info in functions(source_at(repo, newer, path)).items():
-            if (path, name) not in old_keys:
+    for path in changed_paths:
+        old_definitions = functions(source_at(repo, older, path))
+        new_definitions = functions(source_at(repo, newer, path))
+        for name, info in new_definitions.items():
+            if name not in old_definitions:
                 arrivals.append({
                     "path": path, "function": name,
                     "line": info["line"], "source": info["source"],

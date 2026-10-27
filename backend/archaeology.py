@@ -55,14 +55,24 @@ def functions(source):
     return found
 
 
+def changed_python_paths(repo, older, newer):
+    """List paths with changed Python content (including deleted and renamed files).
+
+    We deliberately disable rename detection so both the source and destination
+    of a file rename are scanned. Git's pathspec limits work to Python files.
+    """
+    paths = git(repo, "diff", "--no-renames", "--name-only", older, newer,
+                "--", "*.py").splitlines()
+    return set(paths)
+
+
 def candidates(repo, older="HEAD~1", newer="HEAD"):
+    """Read ONLY changed Python files instead of each file in both Git trees."""
     repo = Path(repo).resolve()
-    old_paths = python_files(repo, older)
-    new_paths = python_files(repo, newer)
     removed = []
-    for path in sorted(old_paths):
+    for path in sorted(changed_python_paths(repo, older, newer)):
         before = functions(source_at(repo, older, path))
-        after = functions(source_at(repo, newer, path)) if path in new_paths else {}
+        after = functions(source_at(repo, newer, path))
         for name, info in before.items():
             if name not in after:
                 removed.append({

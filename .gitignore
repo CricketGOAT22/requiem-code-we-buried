@@ -5,3 +5,6 @@ __pycache__/
 .env
 node_modules/
 dist/
+
+# Public repositories cloned for local analysis (never commit their .git folders)
+external/

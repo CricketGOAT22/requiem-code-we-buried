@@ -1,0 +1,257 @@
+{
+  "protocol": "requiem-human-adjudication-v1",
+  "input_sha256": "f938a324f182459914d52ed14d6d7e41bcb966254be0c4f680a1fb6960694a46",
+  "scan_sha256": "9b77bb49cd89390ef48909d20b5f2a76d695742da5798411fccb803724d55a4e",
+  "repository": "pallets/click",
+  "review_policy": "Assess the factual claims in EXPLANATION, not poetic merit. SUPPORTED: each factual assertion is directly evidenced, or uncertainty is clearly expressed. UNSUPPORTED: one or more categorical factual claims exceeds the cited Git evidence. UNCLEAR: cannot decide from the available excerpts; inspect commits and explain uncertainty. Evidence IDs alone do not prove a claim.",
+  "design_limitations": "Conditions are masked in the terminal annotation view only, not cryptographically blinded; reviewer can recognize prompt style. Single-rater descriptive study, no validated factuality metric.",
+  "invalid_model_responses_excluded": 0,
+  "entries": [
+    {
+      "subject": "src/click/utils.py::safecall",
+      "before": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "after": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "model": "gemma3:4b",
+      "method": "baseline",
+      "repetition": 1,
+      "interpretation": {
+        "epitaph": "The `safecall` function vanished, replaced by a similarly named `_safecall`.",
+        "explanation": "The `safecall` function was removed from `src/click/utils.py` and replaced with a new function named `_safecall` that performs the same functionality. This change indicates a refactoring or renaming of the function, but does not necessarily imply a change in behavior.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines safecall at line 36.",
+          "source_excerpt": "def safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:\n    \"\"\"Wraps a function so that it swallows exceptions.\"\"\"\n\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None\n\n    return update_wrapper(wrapper, func)"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function safecall is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _safecall, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def _safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:\n    \"\"\"Wraps a function so that it swallows exceptions.\n\n    :meta private:\n    \"\"\"\n\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None\n\n    return update_wrapper(wrapper, func)"
+        }
+      ],
+      "machine_flags": [
+        "possible_successor_without_uncertainty_word"
+      ],
+      "human_review": {
+        "verdict": "unsupported",
+        "reason": "E1-E3 establish removal, appearance, and structural similarity, but do not establish functional equivalence or prove that _safecall intentionally replaced safecall."
+      },
+      "id": "R001"
+    },
+    {
+      "subject": "src/click/core.py::Argument.human_readable_name",
+      "before": "06b2a678741131fd577ce170e23e5ca0aeba0309",
+      "after": "2247b35ea1c47c727d7a06e51fa280e12a863ff6",
+      "model": "gemma3:4b",
+      "method": "guarded",
+      "repetition": 1,
+      "interpretation": {
+        "epitaph": "The name shifts, a fleeting echo of intent, lost to the currents of change. Once a simple offering, now a ghost in the machine.",
+        "explanation": "The function `Argument.human_readable_name` was present in `src/click/core.py` at commit `06b2a678741131fd577ce170e23e5ca0aeba0309`. It was subsequently removed at commit `2247b35ea1c47c727d7a06e51fa280e12a863ff6`, replaced by a similar function `Argument.spec`. The exact reasons for this change are not discernible from the available code excerpts.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "E1",
+          "claim": "At commit 06b2a678741131fd577ce170e23e5ca0aeba0309, src/click/core.py defines Argument.human_readable_name at line 3838.",
+          "source_excerpt": "def human_readable_name(self) -> str:\n        if self.metavar is not None:\n            return self.metavar\n        return self.name.upper()"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 2247b35ea1c47c727d7a06e51fa280e12a863ff6, qualified function Argument.human_readable_name is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 2247b35ea1c47c727d7a06e51fa280e12a863ff6, src/click/core.py defines newly appearing function Argument.spec, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def spec(self) -> str:\n        \"\"\"Returns the argument's metavar, which is how the user reads it in\n        ``--help``. An argument has no flag to spell, so this is the\n        :attr:`metavar` if one was given, and the uppercased :attr:`name`\n        otherwise.\n\n        .. versionadded:: 8.6.0\n        \"\"\"\n        if self.metavar is not None:\n            return self.metavar\n        return self.name.upper()"
+        }
+      ],
+      "machine_flags": [
+        "possible_successor_without_uncertainty_word"
+      ],
+      "human_review": {
+        "verdict": "unsupported",
+        "reason": "E1-E3 verify the removal of Argument.human_readable_name and the appearance of the structurally similar Argument.spec, but do not conclusively establish that one intentionally replaced the other. The explanation otherwise acknowledges uncertainty appropriately."
+      },
+      "id": "R002"
+    },
+    {
+      "subject": "src/click/core.py::Option.get_help_record._write_opts",
+      "before": "36baa15ff831b939a22bc527cd76ce653ef6f66d",
+      "after": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1",
+      "model": "gemma3:4b",
+      "method": "guarded",
+      "repetition": 1,
+      "interpretation": {
+        "epitaph": "The script shifted, a subtle displacement, leaving only echoes of its former form. A silent rearrangement, a ghost of function remains.",
+        "explanation": "The function `Option.get_help_record._write_opts` was removed from `src/click/core.py` at commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1. Simultaneously, a functionally identical function `Option.get_help_spec._write_opts` was introduced. This indicates a change in the codebase, but the precise reason for the removal is unknown.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "E1",
+          "claim": "At commit 36baa15ff831b939a22bc527cd76ce653ef6f66d, src/click/core.py defines Option.get_help_record._write_opts at line 3344.",
+          "source_excerpt": "def _write_opts(opts: cabc.Sequence[str]) -> str:\n            nonlocal any_prefix_is_slash\n\n            rv, any_slashes = join_options(opts)\n\n            if any_slashes:\n                any_prefix_is_slash = True\n\n            if not self.is_flag and not self.count:\n                rv += f\" {self.make_metavar(ctx=ctx)}\"\n\n            return rv"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, qualified function Option.get_help_record._write_opts is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, src/click/core.py defines newly appearing function Option.get_help_spec._write_opts, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def _write_opts(opts: cabc.Sequence[str]) -> str:\n            nonlocal any_prefix_is_slash\n\n            rv, any_slashes = join_options(opts)\n\n            if any_slashes:\n                any_prefix_is_slash = True\n\n            if not self.is_flag and not self.count:\n                rv += f\" {self.make_metavar(ctx=ctx)}\"\n\n            return rv"
+        }
+      ],
+      "machine_flags": [
+        "unproven_equivalence_language"
+      ],
+      "human_review": {
+        "verdict": "unsupported",
+        "reason": "E1-E3 establish that the original function disappeared and a structurally identical candidate appeared in the same commit. However, the claim that they are functionally identical is not established by structural similarity alone."
+      },
+      "id": "R003"
+    },
+    {
+      "subject": "src/click/utils.py::safecall",
+      "before": "7df2f82305f20f1611a9668b38d26933b648d807",
+      "after": "333c28d79cd982990ee98eef61ec20ab1a4f38ba",
+      "model": "gemma3:4b",
+      "method": "guarded",
+      "repetition": 1,
+      "interpretation": {
+        "epitaph": "The echo of a safeguard fades, a silent, shadowed plea.  A new form arises, mirroring what used to be.",
+        "explanation": "The original `safecall` function was removed from `src/click/utils.py` at commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba.  Subsequently, a function named `_safecall` was defined within the same file, exhibiting a structural similarity to the original. This change indicates a functional replacement, but the precise reasons for the removal and the introduction of the new function are not discernible from the provided data.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "E1",
+          "claim": "At commit 7df2f82305f20f1611a9668b38d26933b648d807, src/click/utils.py defines safecall at line 36.",
+          "source_excerpt": "def safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:\n    \"\"\"Wraps a function so that it swallows exceptions.\"\"\"\n\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None\n\n    return update_wrapper(wrapper, func)"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, qualified function safecall is no longer defined at path src/click/utils.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 333c28d79cd982990ee98eef61ec20ab1a4f38ba, src/click/utils.py defines newly appearing function _safecall, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def _safecall(func: t.Callable[P, R]) -> t.Callable[P, R | None]:\n    \"\"\"Wraps a function so that it swallows exceptions.\n\n    :meta private:\n    \"\"\"\n\n    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R | None:\n        try:\n            return func(*args, **kwargs)\n        except Exception:\n            pass\n        return None\n\n    return update_wrapper(wrapper, func)"
+        }
+      ],
+      "machine_flags": [
+        "possible_successor_without_uncertainty_word"
+      ],
+      "human_review": {
+        "verdict": "unsupported",
+        "reason": "E1-E3 confirm the disappearance of safecall and appearance of the structurally similar _safecall. However, describing it as a functional replacement asserts a relationship not established by the available Git evidence."
+      },
+      "id": "R004"
+    },
+    {
+      "subject": "src/click/core.py::Option.get_help_record._write_opts",
+      "before": "36baa15ff831b939a22bc527cd76ce653ef6f66d",
+      "after": "6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1",
+      "model": "gemma3:4b",
+      "method": "baseline",
+      "repetition": 1,
+      "interpretation": {
+        "epitaph": "The function `Option.get_help_record._write_opts` vanished and reappeared, mirroring its original code.",
+        "explanation": "The function `Option.get_help_record._write_opts` was initially defined in `src/click/core.py` at commit 36baa15ff831b939a22bc527cd76ce653ef6f66d, but was later removed and replaced with an identical function at commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "E1",
+          "claim": "At commit 36baa15ff831b939a22bc527cd76ce653ef6f66d, src/click/core.py defines Option.get_help_record._write_opts at line 3344.",
+          "source_excerpt": "def _write_opts(opts: cabc.Sequence[str]) -> str:\n            nonlocal any_prefix_is_slash\n\n            rv, any_slashes = join_options(opts)\n\n            if any_slashes:\n                any_prefix_is_slash = True\n\n            if not self.is_flag and not self.count:\n                rv += f\" {self.make_metavar(ctx=ctx)}\"\n\n            return rv"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, qualified function Option.get_help_record._write_opts is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 6aabf099bfdd4c1e75fe8d0e0d4241372b988ab1, src/click/core.py defines newly appearing function Option.get_help_spec._write_opts, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def _write_opts(opts: cabc.Sequence[str]) -> str:\n            nonlocal any_prefix_is_slash\n\n            rv, any_slashes = join_options(opts)\n\n            if any_slashes:\n                any_prefix_is_slash = True\n\n            if not self.is_flag and not self.count:\n                rv += f\" {self.make_metavar(ctx=ctx)}\"\n\n            return rv"
+        }
+      ],
+      "machine_flags": [
+        "possible_successor_without_uncertainty_word"
+      ],
+      "human_review": {
+        "verdict": "unsupported",
+        "reason": "E1 confirms the function existed, but not when it was first introduced. E2-E3 confirm its disappearance and the appearance of a structurally identical candidate, but do not prove intentional replacement or equivalent behavior."
+      },
+      "id": "R005"
+    },
+    {
+      "subject": "src/click/core.py::Argument.human_readable_name",
+      "before": "06b2a678741131fd577ce170e23e5ca0aeba0309",
+      "after": "2247b35ea1c47c727d7a06e51fa280e12a863ff6",
+      "model": "gemma3:4b",
+      "method": "baseline",
+      "repetition": 1,
+      "interpretation": {
+        "epitaph": "The humble `Argument.human_readable_name` faded from the codebase, replaced by a more robust `Argument.spec`.",
+        "explanation": "Initially, `Argument.human_readable_name` was defined in `src/click/core.py` to provide a human-readable name for arguments. However, this function was removed and replaced with `Argument.spec`, which performs a similar function, indicating a refactoring or simplification of the argument naming logic.",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "E1",
+          "claim": "At commit 06b2a678741131fd577ce170e23e5ca0aeba0309, src/click/core.py defines Argument.human_readable_name at line 3838.",
+          "source_excerpt": "def human_readable_name(self) -> str:\n        if self.metavar is not None:\n            return self.metavar\n        return self.name.upper()"
+        },
+        {
+          "id": "E2",
+          "claim": "At commit 2247b35ea1c47c727d7a06e51fa280e12a863ff6, qualified function Argument.human_readable_name is no longer defined at path src/click/core.py. This does not prove the logic disappeared from the repository."
+        },
+        {
+          "id": "E3",
+          "claim": "At commit 2247b35ea1c47c727d7a06e51fa280e12a863ff6, src/click/core.py defines newly appearing function Argument.spec, compared with the old function using exact_normalized_structure (score 1.000). Similarity is not proof of equivalent behavior, rename, move, shared authorship, or causation.",
+          "source_excerpt": "def spec(self) -> str:\n        \"\"\"Returns the argument's metavar, which is how the user reads it in\n        ``--help``. An argument has no flag to spell, so this is the\n        :attr:`metavar` if one was given, and the uppercased :attr:`name`\n        otherwise.\n\n        .. versionadded:: 8.6.0\n        \"\"\"\n        if self.metavar is not None:\n            return self.metavar\n        return self.name.upper()"
+        }
+      ],
+      "machine_flags": [
+        "possible_successor_without_uncertainty_word"
+      ],
+      "human_review": {
+        "verdict": "unsupported",
+        "reason": "E1-E3 confirm the disappearance of Argument.human_readable_name and appearance of the structurally similar Argument.spec. However, they do not establish initial introduction, intentional replacement, or that the change was a refactoring or simplification."
+      },
+      "id": "R006"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "repo_name": "pallets/click",
+  "selected_cases": 8,
+  "verified_cases": 8,
+  "candidate_removals_scanned": 38,
+  "grouping": {
+    "distinct_observation_groups": 24,
+    "related_method_observations_grouped": 14,
+    "class_transition_groups": 6,
+    "selected_groups": 8
+  },
+  "cases": [
+    {
+      "case": 1,
+      "function": "src/click/core.py::Argument.human_readable_name",
+      "verified": true,
+      "errors": []
+    },
+    {
+      "case": 2,
+      "function": "src/click/core.py::Option.get_help_record._write_opts",
+      "verified": true,
+      "errors": []
+    },
+    {
+      "case": 3,
+      "function": "src/click/utils.py::safecall",
+      "verified": true,
+      "errors": []
+    },
+    {
+      "case": 4,
+      "function": "src/click/utils.py::safecall.wrapper",
+      "verified": true,
+      "errors": []
+    },
+    {
+      "case": 5,
+      "function": "src/click/utils.py::make_default_short_help",
+      "verified": true,
+      "errors": []
+    },
+    {
+      "case": 6,
+      "function": "src/click/utils.py::LazyFile.__init__",
+      "verified": true,
+      "errors": []
+    },
+    {
+      "case": 7,
+      "function": "src/click/utils.py::LazyFile.__enter__",
+      "verified": true,
+      "errors": []
+    },
+    {
+      "case": 8,
+      "function": "src/click/core.py::Argument.to_info_dict",
+      "verified": true,
+      "errors": []
+    }
+  ],
+  "scope": "Code presence, absence, source text and structural metadata across recorded commit pairs only",
+  "limitations": "Does not prove the cause of a deletion, class rename, ancestry, or equivalent runtime behavior"
+}
